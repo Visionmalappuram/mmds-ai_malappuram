@@ -57,8 +57,10 @@ export function ScoreRing({ value }: ScoreRingProps) {
           {value}
         </div>
 
-        <div className="text-xs tracking-widest text-slate-400">
-          AI READINESS
+        <div className="mt-1 text-center text-[10px] leading-tight tracking-wide text-slate-400">
+          AI
+          <br />
+          READINESS
         </div>
       </div>
     </div>

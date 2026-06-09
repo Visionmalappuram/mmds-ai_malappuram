@@ -2,9 +2,17 @@ import { Bell, Search } from "lucide-react";
 
 export default function Navbar() {
   return (
-    <div className="flex items-center justify-between mb-10">
+    <div className="
+  flex
+  flex-col
+  gap-4
+  mb-8
+  sm:flex-row
+  sm:items-center
+  sm:justify-between
+">
       {/* Search Bar */}
-      <div className="relative">
+      <div className="relative w-full sm:w-auto">
         <Search
           size={18}
           className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
@@ -14,7 +22,7 @@ export default function Navbar() {
           type="text"
           placeholder="Search students..."
           className="
-            w-80
+            w-full sm:w-80
             rounded-2xl
             border border-white/10
             bg-white/5
