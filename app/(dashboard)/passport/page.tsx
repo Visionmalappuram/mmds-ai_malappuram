@@ -2,14 +2,14 @@
 
 import { motion } from "framer-motion";
 
-import { GlassCard } from "../../components/GlassCard";
-import { ScoreRing } from "../../components/ScoreRing";
-import { studentProfile } from "../../lib/mock";
+import { GlassCard } from "@/components/GlassCard";
+import { ScoreRing } from "@/components/ScoreRing";
+import { studentProfile } from "@/lib/mock";
 
 import {
   fadeUp,
   staggerContainer,
-} from "../../lib/motion";
+} from "@/lib/motion";
 
 export default function PassportPage() {
   const p = studentProfile;

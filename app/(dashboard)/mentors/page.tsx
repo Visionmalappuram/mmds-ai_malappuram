@@ -3,14 +3,14 @@
 import { motion } from "framer-motion";
 import { Calendar } from "lucide-react";
 
-import { PageWrapper } from "../../../components/PageWrapper";
-import { GlassCard } from "../../../components/GlassCard";
+import { PageWrapper } from "@/components/PageWrapper";
+import { GlassCard } from "@/components/GlassCard";
 
-import { mentors } from "../../../lib/mentors";
+import { mentors } from "@/lib/mentors";
 import {
   fadeUp,
   staggerContainer,
-} from "../../../lib/motion";
+} from "@/lib/motion";
 
 export default function MentorsPage() {
   return (
