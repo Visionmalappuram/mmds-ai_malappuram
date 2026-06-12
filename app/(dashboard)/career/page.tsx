@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import { GlassCard } from "../../components/GlassCard";
-import { GlowButton } from "../../components/GlowButton";
+import { GlassCard } from "@/components/GlassCard";
+import { GlowButton } from "@/components/GlowButton";
+
 import {
   suggestedCareers,
   industries,
-} from "../../lib/careerData";
+} from "@/lib/careerData";
+import { useState } from "react";
 
 export default function CareerPage() {
   const [search, setSearch] = useState("");

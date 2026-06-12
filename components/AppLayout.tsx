@@ -84,6 +84,11 @@ export default function AppLayout({
           overflow-hidden
         "
       >
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 right-20 h-96 w-96 rounded-full bg-cyan-500/10 blur-3xl animate-pulse" />
+
+         <div className="absolute bottom-20 left-20 h-96 w-96 rounded-full bg-purple-500/10 blur-3xl animate-pulse" />
+      </div>
         <div className="relative z-10">
           <Navbar />
           {children}

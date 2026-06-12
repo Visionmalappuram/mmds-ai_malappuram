@@ -4,15 +4,15 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Calendar } from "lucide-react";
 
-import { PageWrapper } from "../../components/PageWrapper";
-import { GlassCard } from "../../components/GlassCard";
+import { PageWrapper } from "../../../components/PageWrapper";
+import { GlassCard } from "../../../components/GlassCard";
 
-import { opportunities } from "../../lib/opportunities";
+import { opportunities } from "../../../lib/opportunities";
 import {
   fadeUp,
   staggerContainer,
   easeOutExpo,
-} from "../../lib/motion";
+} from "../../../lib/motion";
 
 const categories = [
   "All",

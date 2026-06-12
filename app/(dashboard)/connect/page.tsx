@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GlassCard } from "../../components/GlassCard";
-import { connectStudents } from "../../lib/connect";
-import { fadeUp, staggerContainer } from "../../lib/motion";
+import { GlassCard } from "../../../components/GlassCard";
+import { connectStudents } from "../../../lib/connect";
+import { fadeUp, staggerContainer } from "../../../lib/motion";
 
 export default function ConnectPage() {
   return (
