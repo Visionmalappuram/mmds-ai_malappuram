@@ -2,7 +2,7 @@
 
 import { ReactNode } from "react";
 import { motion } from "framer-motion";
-import { fadeUp } from "../lib/motion";
+import { fadeUp } from "@/lib/motion";
 
 interface AnimatedSectionProps {
   children: ReactNode;

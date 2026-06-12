@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { motion, animate } from "framer-motion";
-import { GlassCard } from "../components/GlassCard";
-import { fadeUp, staggerContainer } from "../lib/motion";
+import { GlassCard } from "@/components/GlassCard";
+import { fadeUp, staggerContainer } from "@/lib/motion";
 
 // --- ROCK-SOLID PREMIUM COUNTER ANIMATION ---
 function AnimatedCounter({ value, suffix = "" }: { value: number; suffix?: string }) {

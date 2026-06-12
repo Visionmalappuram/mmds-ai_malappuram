@@ -1,6 +1,6 @@
-import { GlassCard } from "../../components/GlassCard";
-import { GlowButton } from "../../components/GlowButton";
-import { buddyMessages } from "../../lib/buddy";
+import { GlassCard } from "@/components/GlassCard";
+import { GlowButton } from "@/components/GlowButton";
+import { buddyMessages } from "@/lib/buddy";
 
 export default function AIBuddyPage() {
   return (
