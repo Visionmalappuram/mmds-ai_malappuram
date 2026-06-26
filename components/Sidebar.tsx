@@ -3,26 +3,22 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 import {
-  Home,
   User,
   Rocket,
   Briefcase,
   Users,
   GraduationCap,
   Bot,
+  Info,
 } from "lucide-react";
 
 export default function Sidebar() {
   const pathname = usePathname();
 
   const menuItems = [
-    {
-      name: "Dashboard",
-      href: "/",
-      icon: Home,
-    },
     {
       name: "Passport",
       href: "/passport",
@@ -53,6 +49,13 @@ export default function Sidebar() {
       href: "/ai-buddy",
       icon: Bot,
     },
+
+
+    {
+      name: "About Orbit",
+      href: "/about",
+      icon: Info,
+    },
   ];
 
   return (
@@ -72,13 +75,22 @@ export default function Sidebar() {
       "
     >
       {/* Logo */}
-      <div className="relative mb-10">
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 blur-xl rounded-full" />
+<div className="relative mb-6">
+  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 blur-xl rounded-full" />
 
-        <h1 className="relative text-2xl font-bold text-white">
-          AI Malappuram
-        </h1>
-      </div>
+  <div className="relative flex flex-col">
+    <Image
+      src="/orbit-logo.svg"
+      alt="Orbit"
+      width={180}
+      height={60}
+      className="mb-3"
+    />
+      <p className="mt-2 text-center text-[11px] uppercase tracking-[0.2em] text-slate-500">
+        Future Readiness Platform
+      </p>
+  </div>
+</div>
 
       <nav className="flex flex-col gap-2">
         {menuItems.map((item) => {

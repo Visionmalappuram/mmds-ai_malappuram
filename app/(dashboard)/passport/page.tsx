@@ -1,10 +1,10 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 import { GlassCard } from "@/components/GlassCard";
 import { ScoreRing } from "@/components/ScoreRing";
-import { studentProfile } from "@/lib/mock";
 
 import {
   fadeUp,
@@ -12,7 +12,27 @@ import {
 } from "@/lib/motion";
 
 export default function PassportPage() {
-  const p = studentProfile;
+  const [profile, setProfile] = useState<any>(null);
+
+  useEffect(() => {
+    const saved = localStorage.getItem(
+      "future-passport"
+    );
+
+    if (saved) {
+      setProfile(JSON.parse(saved));
+    }
+  }, []);
+
+  if (!profile) {
+    return (
+      <div className="flex h-screen items-center justify-center text-white">
+        Loading Passport...
+      </div>
+    );
+  }
+
+  const p = profile;
 
   return (
     <div className="w-full max-w-7xl mx-auto">
@@ -27,12 +47,16 @@ export default function PassportPage() {
           Future Passport
         </p>
 
-        <h1 className="mt-2 text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-          Hello, {p.name.split(" ")[0]}.
+        <h1 className="mt-2 text-4xl md:text-5xl font-bold">
+          Hello, {p.firstName}
         </h1>
+
+        <p className="mt-3 text-slate-400">
+          {p.school}
+        </p>
       </motion.div>
 
-      {/* Profile Card */}
+      {/* Main Profile */}
       <motion.div
         variants={fadeUp}
         initial="hidden"
@@ -40,30 +64,24 @@ export default function PassportPage() {
       >
         <GlassCard className="p-6 md:p-8">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
-            <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
-              <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-3xl bg-gradient-to-br from-violet-500 to-cyan-500 text-2xl font-bold">
-                {p.avatar}
-              </div>
+            <div>
+              <h2 className="text-2xl font-semibold">
+                {p.firstName} {p.lastName}
+              </h2>
 
-              <div>
-                <h2 className="text-2xl font-semibold">
-                  {p.name}
-                </h2>
-
-                <p className="text-slate-400">
-                  {p.school} · {p.grade}
-                </p>
-              </div>
+              <p className="text-slate-400">
+                {p.className}
+              </p>
             </div>
 
-            <div className="flex justify-center lg:justify-end">
-              <ScoreRing value={p.score} />
-            </div>
+            <ScoreRing
+              value={p.profileStrength || 0}
+            />
           </div>
         </GlassCard>
       </motion.div>
 
-      {/* Skills + Achievements */}
+      {/* Hobbies + Interests */}
       <motion.div
         variants={staggerContainer(0.06, 0.05)}
         initial="hidden"
@@ -71,91 +89,129 @@ export default function PassportPage() {
         className="mt-6 grid gap-6 lg:grid-cols-2"
       >
         <motion.div variants={fadeUp}>
-          <GlassCard className="h-full p-6">
+          <GlassCard className="p-6">
             <h3 className="mb-4 text-xl font-semibold">
-              Skills
+              Hobbies
             </h3>
 
             <div className="flex flex-wrap gap-2">
-              {p.skills.map((skill) => (
-                <span
-                  key={skill}
-                  className="rounded-full bg-slate-800 px-3 py-1 text-sm"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-
-            <h3 className="mb-4 mt-8 text-xl font-semibold">
-              Interests
-            </h3>
-
-            <div className="flex flex-wrap gap-2">
-              {p.interests.map((interest) => (
-                <span
-                  key={interest}
-                  className="rounded-full bg-gradient-to-r from-violet-500 to-cyan-500 px-3 py-1 text-sm"
-                >
-                  {interest}
-                </span>
-              ))}
+              {p.hobbies?.map(
+                (item: string) => (
+                  <span
+                    key={item}
+                    className="rounded-full bg-slate-800 px-3 py-1 text-sm"
+                  >
+                    {item}
+                  </span>
+                )
+              )}
             </div>
           </GlassCard>
         </motion.div>
 
         <motion.div variants={fadeUp}>
-          <GlassCard className="h-full p-6">
+          <GlassCard className="p-6">
             <h3 className="mb-4 text-xl font-semibold">
-              Achievements
+              Interests
             </h3>
 
-            <ul className="space-y-3">
-              {p.achievements.map((achievement) => (
-                <li
-                  key={achievement}
-                  className="text-slate-300"
-                >
-                  • {achievement}
-                </li>
-              ))}
-            </ul>
+            <div className="flex flex-wrap gap-2">
+              {p.interests?.map(
+                (item: string) => (
+                  <span
+                    key={item}
+                    className="rounded-full bg-gradient-to-r from-violet-500 to-cyan-500 px-3 py-1 text-sm"
+                  >
+                    {item}
+                  </span>
+                )
+              )}
+            </div>
           </GlassCard>
         </motion.div>
       </motion.div>
 
-      {/* Future Goals */}
+      {/* Career Goals */}
       <motion.div
         variants={fadeUp}
         initial="hidden"
         animate="show"
       >
         <GlassCard className="mt-6 p-6">
-          <h3 className="mb-6 text-xl font-semibold">
-            Future Goals
+          <h3 className="mb-4 text-xl font-semibold">
+            Career Goals
           </h3>
 
-          <div className="space-y-6">
-            {p.goals.map((goal) => (
-              <div key={goal.label}>
-                <div className="mb-2 flex justify-between">
-                  <span>{goal.label}</span>
-                  <span>{goal.progress}%</span>
-                </div>
-
-                <div className="h-2 rounded-full bg-slate-800">
-                  <div
-                    className="h-2 rounded-full bg-gradient-to-r from-violet-500 to-cyan-500"
-                    style={{
-                      width: `${goal.progress}%`,
-                    }}
-                  />
-                </div>
-              </div>
-            ))}
+          <div className="flex flex-wrap gap-2">
+            {p.careerGoals?.map(
+              (goal: string) => (
+                <span
+                  key={goal}
+                  className="rounded-full bg-cyan-500/20 px-3 py-1 text-sm text-cyan-300"
+                >
+                  {goal}
+                </span>
+              )
+            )}
           </div>
         </GlassCard>
       </motion.div>
+
+      {/* Learning Profile */}
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        animate="show"
+      >
+        <GlassCard className="mt-6 p-6">
+          <h3 className="mb-4 text-xl font-semibold">
+            Learning Profile
+          </h3>
+
+          <div className="grid gap-4 md:grid-cols-2">
+            <div>
+              <p className="text-xs uppercase text-slate-500">
+                Learning Style
+              </p>
+
+              <p className="mt-1">
+                {p.learningStyle ||
+                  "Not selected"}
+              </p>
+            </div>
+
+            <div>
+              <p className="text-xs uppercase text-slate-500">
+                Biggest Challenge
+              </p>
+
+              <p className="mt-1">
+                {p.learningBarrier ||
+                  "Not selected"}
+              </p>
+            </div>
+          </div>
+        </GlassCard>
+      </motion.div>
+
+      {/* Dream Goal */}
+      {p.dreamGoal && (
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          animate="show"
+        >
+          <GlassCard className="mt-6 p-6">
+            <h3 className="mb-4 text-xl font-semibold">
+              Dream Goal
+            </h3>
+
+            <p className="text-slate-300">
+              {p.dreamGoal}
+            </p>
+          </GlassCard>
+        </motion.div>
+      )}
     </div>
   );
 }

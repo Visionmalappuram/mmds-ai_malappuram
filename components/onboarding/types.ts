@@ -4,18 +4,19 @@ export interface OnboardingData {
   lastName: string;
   className: string;
   school: string;
-  language: "English" | "Malayalam";
+  language: "English";
 
   // Step 2
-  interests: string[];
+  hobbies: string[];
 
   // Step 3
-  hobbies: string[];
+  interests: string[];
 
   // Step 4
   careerGoals: string[];
 
   // Step 5
   dreamGoal: string;
-  weeklyHours: string;
+  learningStyle: string;
+  learningBarrier: string;
 }

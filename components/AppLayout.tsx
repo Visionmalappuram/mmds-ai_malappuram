@@ -4,6 +4,7 @@ import { ReactNode, useState } from "react";
 import { Menu, X } from "lucide-react";
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
+import Image from "next/image";
 
 interface AppLayoutProps {
   children: ReactNode;
@@ -28,9 +29,16 @@ export default function AppLayout({
           <Menu size={28} />
         </button>
 
-        <h1 className="font-bold text-white">
-          AI Malappuram
-        </h1>
+        <div className="flex justify-center">
+          <Image
+            src="/orbit-logo.svg"
+            alt="Orbit"
+            width={140}
+            height={42}
+            style={{ height: "auto" }}
+            priority
+          />
+        </div>
 
         <div className="w-7" />
       </div>
@@ -46,7 +54,7 @@ export default function AppLayout({
           <div className="fixed left-0 top-0 z-50 h-screen w-72 border-r border-white/10 bg-slate-950 p-6">
             <div className="mb-8 flex items-center justify-between">
               <h2 className="text-xl font-bold text-white">
-                AI Malappuram
+                ORBIT
               </h2>
 
               <button
@@ -58,13 +66,13 @@ export default function AppLayout({
             </div>
 
             <nav className="flex flex-col gap-5 text-slate-300">
-              <a href="/">Dashboard</a>
               <a href="/passport">Passport</a>
               <a href="/opportunities">Opportunities</a>
               <a href="/career/ai-engineer">Career</a>
               <a href="/connect">Connect</a>
               <a href="/mentors">Mentors</a>
               <a href="/ai-buddy">AI Buddy</a>
+              <a href="/about">About Orbit</a>
             </nav>
           </div>
         </>
